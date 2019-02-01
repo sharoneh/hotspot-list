@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/HotspotItem.scss';
 
-const HotspotItem = () => {
+const HotspotItem = ({ title, description }) => {
   return (
     <li className="HotspotItem">
-      <span>Hotspot #1</span>
+      <span>{title}</span>
 
       <a href="http://localhost">Delete</a>
     </li>
