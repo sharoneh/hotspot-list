@@ -1,0 +1,20 @@
+@import 'variables';
+
+.HotspotList {
+  width: 30rem;
+  margin-top: 3.5rem;
+
+  h1.title {
+    background-color: #ebebeb;
+    color: $font-grey;
+    font-weight: $font-weight;
+    padding: .5rem;
+    font-size: $font-size;
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}

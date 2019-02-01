@@ -1,0 +1,35 @@
+@import 'variables';
+
+.Header {
+  width: 90%;
+  margin: auto;
+  height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 150px;
+  border-bottom: 1px solid $lighter-grey;
+  
+  h1 {
+    margin: 0;
+  }
+
+  img.logo {
+    width: 200px;
+  }
+
+  .links {
+    width: 100%;
+    margin-left: 50px;
+  
+    a {
+      text-decoration: none;
+      color: $font-grey;
+      margin-left: 50px;
+      font-size: $font-size;
+      line-height: 30px;
+      font-weight: $font-weight;
+    }
+  }
+}

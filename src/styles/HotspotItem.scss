@@ -1,0 +1,18 @@
+@import 'variables';
+
+li.HotspotItem {
+  list-style: none;
+  height: 4rem;
+  border-bottom: 1px solid $lighter-grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $font-grey;
+  padding: 10px;
+
+  a {
+    color: $blue;
+  }
+}
