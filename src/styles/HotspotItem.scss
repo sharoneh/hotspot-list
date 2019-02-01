@@ -12,7 +12,15 @@ li.HotspotItem {
   color: $font-grey;
   padding: 10px;
 
-  a {
+  button {
     color: $blue;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    width: 5rem;
   }
 }

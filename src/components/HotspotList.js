@@ -16,7 +16,7 @@ const HotspotList = ({ hotspots }) => {
 
       <Hotspots>
         {hotspots.map((hotspot, index) => (
-          <HotspotItem { ...hotspot } key={`hotspotListItem#${index}`} />
+          <HotspotItem { ...hotspot } index={index} key={`hotspotListItem#${index}`} />
         ))}
       </Hotspots>
     </div>
