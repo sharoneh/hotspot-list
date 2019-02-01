@@ -1,15 +1,17 @@
 import React from 'react';
 import '../styles/Main.scss';
 import HotspotList from './HotspotList';
+import { connect } from 'react-redux';
+import { createHotspot } from '../redux/AppReducer';
 
-const Main = () => {
+const Main = ({ createHotspot }) => {
   return (
     <div className="Main">
-      <button>Create Hotspot</button>
+      <button onClick={createHotspot}>Create Hotspot</button>
 
       <HotspotList />
     </div>
   )
 }
 
-export default Main
+export default connect(null, { createHotspot })(Main)

@@ -1,4 +1,5 @@
 // action types
+const CREATE_HOTSPOT = 'CREATE_HOTSPOT'
 
 // initial state
 const INITIAL_STATE = {
@@ -21,9 +22,23 @@ const INITIAL_STATE = {
 // reducer
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case CREATE_HOTSPOT:
+      return {
+        ...state,
+        hotspots: [
+          ...state.hotspots,
+          {
+            title: `Hotspot #${state.hotspots.length + 1}`,
+            description: ''
+          }
+        ]
+      }
     default:
       return state
   }
 }
 
 // actions
+export const createHotspot = () => {
+  return { type: CREATE_HOTSPOT }
+}
