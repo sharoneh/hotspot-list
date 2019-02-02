@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Header.scss';
 import logo from '../images/conpass-logo.png';
-import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+import Popover from './Popover';
 
 const Header = () => {
   return (
@@ -15,11 +15,7 @@ const Header = () => {
         <button>Link fake 4</button>
       </div>
 
-      <UncontrolledPopover trigger="legacy" placement="bottom" target="button">
-          <PopoverHeader>Legacy Trigger</PopoverHeader>
-          <PopoverBody>
-            Legacy is a reactstrap special trigger value (outside of bootstrap's spec/standard). Before reactstrap correctly supported click and focus, it had a hybrid which was very useful and has been brought back as trigger="legacy". One advantage of the legacy trigger is that it allows the popover text to be selected while also closing when clicking outside the triggering element and popover itself.</PopoverBody>
-        </UncontrolledPopover>
+      <Popover />
     </div>
   )
 }
