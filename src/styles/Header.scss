@@ -10,18 +10,26 @@
   padding-left: 50px;
   padding-right: 150px;
   border-bottom: 1px solid $lighter-grey;
+  margin-bottom: 3rem;
   
   h1 {
     margin: 0;
   }
 
-  img.logo {
-    width: 200px;
+  a.logo {
+    position: relative;
+    top: .3rem;
+
+    img {
+      width: 200px;
+    }
   }
 
   .links {
     width: 100%;
     margin-left: 50px;
+    display: flex;
+    justify-content: space-around;
   
     button {
       text-decoration: none;
@@ -29,7 +37,7 @@
       border: none;
       outline: none;
       color: $font-grey;
-      margin-left: 50px;
+      // margin-left: 50px;
       font-size: $font-size;
       line-height: 30px;
       font-weight: $font-weight;

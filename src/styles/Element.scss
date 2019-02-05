@@ -1,0 +1,18 @@
+.Element {
+  position: relative;
+
+  div {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    left: -10px;
+  }
+  
+  &:focus, &:hover {
+    div {
+      background-color: rgba(255, 0, 0, .1);
+      border: 2px solid red;
+    }
+  }
+}

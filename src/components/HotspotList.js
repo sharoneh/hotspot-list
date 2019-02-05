@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/HotspotList.scss';
 import HotspotItem from './HotspotItem';
 import { connect } from 'react-redux';
+import Element from './Element';
 
 const Hotspots = ({ children }) => {
   return (
@@ -12,11 +13,17 @@ const Hotspots = ({ children }) => {
 const HotspotList = ({ hotspots }) => {
   return (
     <div className="HotspotList">
-      <h1 className="title">List of hotspots</h1>
+      <Element>
+        <h1 className="title">List of hotspots</h1>
+      </Element>
 
       <Hotspots>
         {hotspots.map((hotspot, index) => (
-          <HotspotItem { ...hotspot } index={index} key={`hotspotListItem#${index}`} />
+          <HotspotItem
+            { ...hotspot }
+            index={index}
+            key={`hotspotListItem#${index}`}
+          />
         ))}
       </Hotspots>
     </div>

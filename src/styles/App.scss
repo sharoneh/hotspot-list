@@ -12,6 +12,10 @@ body {
 }
 
 .Page {
-  height: 100vh;
+  height: 100%;
   position: relative;
+}
+
+html, body, #root {
+  height: 100%;
 }
