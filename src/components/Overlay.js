@@ -5,7 +5,7 @@ import Popover from './Popover';
 
 class Overlay extends React.Component {
   componentDidUpdate(prevProps) {
-    if (prevProps.hotspots.length !== this.props.hotspots.length) {
+    if (prevProps.hotspots.length === this.props.hotspots.length - 1) {
       const hotspotBtn = document.querySelector(`#hotspotButton${this.props.hotspots.length - 1}`)
       hotspotBtn.click()
     }

@@ -2,17 +2,25 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Overlay from './Overlay';
+import { getFromLocalStorage } from '../redux/AppReducer';
+import { connect } from 'react-redux';
 
-const Page = () => {
-  return (
-    <div className="Page">
-      <Header />
-      
-      <Main />
+class Page extends React.Component {
+  componentDidMount() {
+    this.props.getFromLocalStorage()
+  }
 
-      <Overlay />
-    </div>
-  )
+  render() {
+    return (
+      <div className="Page">
+        <Header />
+        
+        <Main />
+  
+        <Overlay />
+      </div>
+    )
+  }
 }
 
-export default Page
+export default connect(null, { getFromLocalStorage })(Page)

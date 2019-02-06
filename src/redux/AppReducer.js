@@ -3,6 +3,8 @@ const CREATE_HOTSPOT = 'CREATE_HOTSPOT'
 const DELETE_HOTSPOT = 'DELETE_HOTSPOT'
 const CAPTURE_SPOT = 'CAPTURE_SPOT'
 const CHANGE_TEXT = 'CHANGE_TEXT'
+const SAVE_TO_LOCALSTORAGE = 'SAVE_TO_LOCALSTORAGE'
+const GET_FROM_LOCALSTORAGE = 'GET_FROM_LOCALSTORAGE'
 
 // initial state
 const INITIAL_STATE = {
@@ -51,6 +53,11 @@ export default (state = INITIAL_STATE, action) => {
           ...state.hotspots.slice(action.payload.index + 1)
         ]
       }
+    case GET_FROM_LOCALSTORAGE:
+      return {
+        ...state,
+        hotspots: action.payload
+      }
     default:
       return state
   }
@@ -62,29 +69,60 @@ export const createHotspot = () => {
 }
 
 export const deleteHotspot = (hotspotIndex) => {
-  return {
-    type: DELETE_HOTSPOT,
-    payload: hotspotIndex
+  return dispatch => {
+    dispatch({
+      type: DELETE_HOTSPOT,
+      payload: hotspotIndex
+    })
+
+    dispatch(saveToLocalStorage())
   }
 }
 
 export const onCaptureClick = e => {
-  const x = e.pageX - 10;
-  const y = e.pageY - 10;
+  return dispatch => {
+    const x = e.pageX - 10;
+    const y = e.pageY - 10;
+  
+    dispatch({
+      type: CAPTURE_SPOT,
+      payload: { x, y }
+    })
 
-  return {
-    type: CAPTURE_SPOT,
-    payload: { x, y }
+    dispatch(saveToLocalStorage())
   }
 }
 
 export const onHotspotTextChange = (e, field, hotspotIndex) => {
+  return dispatch => {
+    dispatch({
+      type: CHANGE_TEXT,
+      payload: {
+        value: e.target.value,
+        field,
+        index: hotspotIndex
+      }
+    })
+
+    dispatch(saveToLocalStorage())
+  }
+}
+
+const saveToLocalStorage = () => {
+  return (dispatch, getState) => {
+    const { hotspots } = getState()
+    
+    localStorage.setItem('conpassHotspots', JSON.stringify(hotspots))
+
+    dispatch({ type: SAVE_TO_LOCALSTORAGE })
+  }
+}
+
+export const getFromLocalStorage = () => {
+  const stored = JSON.parse(localStorage.getItem('conpassHotspots'))
+  
   return {
-    type: CHANGE_TEXT,
-    payload: {
-      value: e.target.value,
-      field,
-      index: hotspotIndex
-    }
+    type: GET_FROM_LOCALSTORAGE,
+    payload: stored || []
   }
 }
