@@ -1,14 +1,35 @@
 import React from 'react';
 import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import '../styles/Popover.scss';
+import { connect } from 'react-redux';
+import { onHotspotTextChange } from '../redux/AppReducer';
 
-const Popover = ({ target }) => {
+const Popover = ({ hotspotIndex, hotspots, onHotspotTextChange }) => {
+  const index = hotspotIndex
+  
   return (
-    <UncontrolledPopover trigger="legacy" placement="bottom" target={target}>
-      <PopoverHeader>How to install</PopoverHeader>
-      <PopoverBody>It takes only 5 minutes to install this script into your website.</PopoverBody>
+    <UncontrolledPopover trigger="legacy" placement="bottom" target={`hotspotButton${hotspotIndex}`}>
+      <PopoverHeader>
+        <input
+          type="text"
+          defaultValue={hotspots[index].title}
+          onChange={e => onHotspotTextChange(e, 'title', index)}
+        />
+      </PopoverHeader>
+
+      <PopoverBody>
+        <textarea
+          defaultValue={hotspots[index].description}
+          onChange={e => onHotspotTextChange(e, 'description', index)}
+        />
+      </PopoverBody>
     </UncontrolledPopover>
   )
 }
 
-export default Popover
+const mapStateToProps = state => {
+  const { hotspots } = state
+  return { hotspots }
+}
+
+export default connect(mapStateToProps, { onHotspotTextChange })(Popover)

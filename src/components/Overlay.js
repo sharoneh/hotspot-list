@@ -17,7 +17,7 @@ const Overlay = ({ hotspots }) => {
             id={`hotspotButton${index}`}
           />
 
-          <Popover target={`hotspotButton${index}`} />
+          <Popover hotspotIndex={index} />
         </React.Fragment>
       ))}
     </div>

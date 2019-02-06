@@ -2,6 +2,7 @@
 const CREATE_HOTSPOT = 'CREATE_HOTSPOT'
 const DELETE_HOTSPOT = 'DELETE_HOTSPOT'
 const CAPTURE_SPOT = 'CAPTURE_SPOT'
+const CHANGE_TEXT = 'CHANGE_TEXT'
 
 // initial state
 const INITIAL_STATE = {
@@ -38,6 +39,18 @@ export default (state = INITIAL_STATE, action) => {
         ],
         capturing: false
       }
+    case CHANGE_TEXT:
+      return {
+        ...state,
+        hotspots: [
+          ...state.hotspots.slice(0, action.payload.index),
+          {
+            ...state.hotspots[action.payload.index],
+            [action.payload.field]: action.payload.value
+          },
+          ...state.hotspots.slice(action.payload.index + 1)
+        ]
+      }
     default:
       return state
   }
@@ -62,5 +75,16 @@ export const onCaptureClick = e => {
   return {
     type: CAPTURE_SPOT,
     payload: { x, y }
+  }
+}
+
+export const onHotspotTextChange = (e, field, hotspotIndex) => {
+  return {
+    type: CHANGE_TEXT,
+    payload: {
+      value: e.target.value,
+      field,
+      index: hotspotIndex
+    }
   }
 }
