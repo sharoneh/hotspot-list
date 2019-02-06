@@ -1,23 +1,12 @@
 // action types
 const CREATE_HOTSPOT = 'CREATE_HOTSPOT'
 const DELETE_HOTSPOT = 'DELETE_HOTSPOT'
+const CAPTURE_SPOT = 'CAPTURE_SPOT'
 
 // initial state
 const INITIAL_STATE = {
-  hotspots: [
-    {
-      title: 'Hotspot #1',
-      description: ''
-    },
-    {
-      title: 'Hotspot #2',
-      description: ''
-    },
-    {
-      title: 'Hotspot #3',
-      description: ''
-    },
-  ]
+  hotspots: [],
+  capturing: false,
 }
 
 // reducer
@@ -26,13 +15,7 @@ export default (state = INITIAL_STATE, action) => {
     case CREATE_HOTSPOT:
       return {
         ...state,
-        hotspots: [
-          ...state.hotspots,
-          {
-            title: `Hotspot #${state.hotspots.length + 1}`,
-            description: ''
-          }
-        ]
+        capturing: true
       }
     case DELETE_HOTSPOT:
       let newHotspots = [ ...state.hotspots ]
@@ -41,6 +24,19 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         hotspots: newHotspots
+      }
+    case CAPTURE_SPOT:
+      return {
+        ...state,
+        hotspots: [
+          ...state.hotspots,
+          {
+            title: `Hotspot #${state.hotspots.length + 1}`,
+            description: '',
+            position: action.payload
+          }
+        ],
+        capturing: false
       }
     default:
       return state
@@ -56,5 +52,15 @@ export const deleteHotspot = (hotspotIndex) => {
   return {
     type: DELETE_HOTSPOT,
     payload: hotspotIndex
+  }
+}
+
+export const onCaptureClick = e => {
+  const x = e.pageX;
+  const y = e.pageY;
+
+  return {
+    type: CAPTURE_SPOT,
+    payload: { x, y }
   }
 }

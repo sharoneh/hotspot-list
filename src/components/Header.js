@@ -1,21 +1,20 @@
 import React from 'react';
 import '../styles/Header.scss';
 import logo from '../images/conpass-logo.png';
-import Popover from './Popover';
 import Element from './Element';
 
 const Header = () => {
   return (
     <div className="Header">
       <Element>
-        <a className="logo" href="http://localhost:3000">
+        <a className="logo" href="http://localhost:3000" onClick={e => e.preventDefault()}>
           <img src={logo} alt="Conpass"/>
         </a>
       </Element>
       
       <div className="links">
         <Element>
-          <button type="button" id="button">Link fake 1</button>
+          <button>Link fake 1</button>
         </Element>
 
         <Element>
@@ -30,8 +29,6 @@ const Header = () => {
           <button>Link fake 4</button>
         </Element>
       </div>
-
-      <Popover />
     </div>
   )
 }
