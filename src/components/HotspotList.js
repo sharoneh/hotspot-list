@@ -11,6 +11,7 @@ const Hotspots = ({ children }) => {
 }
 
 const HotspotList = ({ hotspots }) => {
+  if (!hotspots.length) return null
   return (
     <div className="HotspotList">
       <Element>

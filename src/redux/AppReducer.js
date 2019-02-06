@@ -69,8 +69,8 @@ export const deleteHotspot = (hotspotIndex) => {
 }
 
 export const onCaptureClick = e => {
-  const x = e.pageX;
-  const y = e.pageY;
+  const x = e.pageX - 10;
+  const y = e.pageY - 10;
 
   return {
     type: CAPTURE_SPOT,

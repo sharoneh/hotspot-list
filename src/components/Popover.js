@@ -12,15 +12,16 @@ const Popover = ({ hotspotIndex, hotspots, onHotspotTextChange }) => {
       <PopoverHeader>
         <input
           type="text"
-          defaultValue={hotspots[index].title}
+          value={hotspots[index].title}
           onChange={e => onHotspotTextChange(e, 'title', index)}
         />
       </PopoverHeader>
 
       <PopoverBody>
         <textarea
-          defaultValue={hotspots[index].description}
+          value={hotspots[index].description}
           onChange={e => onHotspotTextChange(e, 'description', index)}
+          placeholder="Descrição"
         />
       </PopoverBody>
     </UncontrolledPopover>
